@@ -46,6 +46,16 @@ Automated "Dead Man's Switch" system.
 
 ---
 
+## 🔒 Security & Privacy Note
+
+To ensure data privacy and prevent the leakage of sensitive information (Data Leakage Prevention), the following directories have been **excluded** from this public repository:
+
+- `lib/database/` (SQLite Database Management)
+- `lib/models/` (User Data Models)
+- `lib/services/` (Backend Logic & SMTP API Keys)
+
+> **Note:** These directories contain **Private App Passwords**, **API Keys**, and **Critical Logic** for the emergency response system. If you wish to test this project, please contact the developer for configuration guidelines or recreate the files based on the project architecture.
+
 ⚠️ Important Note
 
 This application relies on Background Execution. On Android 12+ and specific manufacturers (Vivo, Xiaomi), you may need to manually enable:
