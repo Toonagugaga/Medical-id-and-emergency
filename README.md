@@ -1,16 +1,65 @@
-# degital_medical_id
+# 🏥 Digital Medical ID Application
 
-A new Flutter project.
+> **"Medical ID: Speaks for you when you can't."**
 
-## Getting Started
+## 📖 Overview
+**Digital Medical ID** is a life-saving application developed with **Flutter**. It is designed to assist users in emergency situations by functioning as both a **Digital Medical Tag** accessible from the lock screen and an **Automated Safety Tracking System** (Dead Man's Switch) for the elderly or those living alone.
 
-This project is a starting point for a Flutter application.
+If the user becomes unresponsive, the system automatically triggers an SOS alert to emergency contacts with real-time GPS coordinates.
 
-A few resources to get you started if this is your first Flutter project:
+## ✨ Key Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### 🛡️ 1. Medical ID Mode (Passive Protection)
+Displays critical health information on the lock screen.
+- **Unremovable Notification:** Utilizes Foreground Service technology to create a "Sticky Notification" that cannot be cleared, ensuring information is always visible.
+- **Vital Info:** Shows Name, Blood Type, Allergies, and Emergency Contacts immediately.
+- **Privacy First:** All data is stored locally via SQLite; no data is uploaded to the cloud.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### ⏱️ 2. Tracking Mode (Active Protection)
+Automated "Dead Man's Switch" system.
+- **Check-in System:** Users must verify their safety within a set interval (e.g., every 2 hours).
+- **Automated SOS:** If the timer expires without a check-in, the system triggers:
+  - 📍 **GPS Tracking:** Retrieves current coordinates.
+  - 📧 **Emergency Email:** Sends an alert email with a Google Maps link.
+  - 📞 **Auto Call:** Automatically dials the emergency contact number (background execution supported).
+
+### 💊 3. Drug & Health Info
+- **Smart Search:** Search for drug allergies using the FDA API (supports both Generic & Brand names).
+- **Profile Management:** Record medical conditions and history.
+
+---
+
+## 🛠️ Tech Stack
+
+### Core Framework
+- **Flutter & Dart** (Cross-platform Development)
+
+### Key Libraries & Architecture
+- **State Management:** Native `setState`
+- **Background Processing:**
+  - `flutter_foreground_task`: Manages background services and sticky notifications.
+  - `android_alarm_manager_plus`: Ensures precise timing even in Doze mode.
+- **Notifications:** `flutter_local_notifications`
+- **Location Services:** `geolocator` (High accuracy GPS)
+- **Database:** `sqflite` (Offline local storage)
+- **Communication:** `url_launcher`, `android_intent_plus`, `mailer`
+
+---
+
+## 🔒 Security & Privacy Note
+
+To ensure data privacy and prevent the leakage of sensitive information (Data Leakage Prevention), the following directories have been **excluded** from this public repository:
+
+- `lib/database/` (SQLite Database Management)
+- `lib/models/` (User Data Models)
+- `lib/services/` (Backend Logic & SMTP API Keys)
+
+> **Note:** These directories contain **Private App Passwords**, **API Keys**, and **Critical Logic** for the emergency response system. If you wish to test this project, please contact the developer for configuration guidelines or recreate the files based on the project architecture.
+
+⚠️ Important Note
+
+This application relies on Background Execution. On Android 12+ and specific manufacturers (Vivo, Xiaomi), you may need to manually enable:
+
+    "Display over other apps" permission.
+
+    "Autostart" permission to ensure the SOS system functions correctly.
