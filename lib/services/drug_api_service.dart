@@ -10,7 +10,7 @@ class DrugApiService {
       // รูปแบบ Query: (openfda.brand_name:"query*" OR openfda.generic_name:"query*")
 
       final encodedQuery = Uri.encodeComponent('openfda.brand_name:"$query*" OR openfda.generic_name:"$query*"');
-      final url = Uri.parse('https://api.fda.gov/drug/label.json?search=$encodedQuery&limit=10');
+      final url = Uri.parse('zzzz');
 
       final response = await http.get(url);
 
