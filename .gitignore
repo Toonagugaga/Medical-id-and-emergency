@@ -45,5 +45,5 @@ app.*.map.json
 /android/app/release
 
 lib/database/
-lib/models/
-lib/services/
+lib/services/warning_api_service.dart
+lib/services/system_api_service.dart
